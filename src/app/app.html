@@ -47,13 +47,31 @@
          [class.w-16]="!isLeftPanelExpanded()">
       <!-- Header Icons -->
       <div class="flex justify-between items-center px-2">
-        <svg class="w-6 h-6 text-text-neutral" viewBox="0 0 24 24" fill="none">
+        <!-- Square icon - only visible when expanded -->
+        <svg class="w-6 h-6 text-text-neutral transition-all duration-300" 
+             [class.hidden]="!isLeftPanelExpanded()" 
+             viewBox="0 0 24 24" fill="none">
           <path d="M16.5 16V8L12.5 12L16.5 16ZM5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z" fill="currentColor"/>
         </svg>
+        
+        <!-- Add button - only visible when collapsed -->
+        <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-all duration-300" 
+                [class.hidden]="isLeftPanelExpanded()" 
+                (click)="createNewTask()">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
         <div class="flex items-center gap-2">
-          <svg class="w-6 h-6 text-text-neutral" viewBox="0 0 24 24" fill="none">
+          <!-- Search icon - only visible when expanded -->
+          <svg class="w-6 h-6 text-text-neutral transition-all duration-300" 
+               [class.hidden]="!isLeftPanelExpanded()" 
+               viewBox="0 0 24 24" fill="none">
             <path d="M15.7549 14.255H14.9649L14.6849 13.985C15.6649 12.845 16.2549 11.365 16.2549 9.755C16.2549 6.165 13.3449 3.255 9.75488 3.255C6.16488 3.255 3.25488 6.165 3.25488 9.755C3.25488 13.345 6.16488 16.255 9.75488 16.255C11.3649 16.255 12.8449 15.665 13.9849 14.685L14.2549 14.965V15.755L19.2549 20.745L20.7449 19.255L15.7549 14.255ZM9.75488 14.255C7.26488 14.255 5.25488 12.245 5.25488 9.755C5.25488 7.26501 7.26488 5.255 9.75488 5.255C12.2449 5.255 14.2549 7.26501 14.2549 9.755C14.2549 12.245 12.2449 14.255 9.75488 14.255Z" fill="currentColor"/>
           </svg>
+          
+          <!-- Toggle button - always visible -->
           <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-colors" (click)="toggleLeftPanel()">
             <svg class="w-4 h-4 transition-transform duration-200" [class.rotate-180]="!isLeftPanelExpanded()" viewBox="0 0 24 24" fill="none">
               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
