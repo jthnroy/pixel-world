@@ -46,48 +46,37 @@
          [class.w-full]="isLeftPanelExpanded()"
          [class.w-16]="!isLeftPanelExpanded()">
       <!-- Header Icons -->
-      <div class="flex flex-col items-center gap-3 px-2">
-        <!-- Collapsed state content -->
-        <div class="flex flex-col items-center gap-3" [class.hidden]="isLeftPanelExpanded()">
-          <!-- Expand button - top icon (gray square with left arrow) -->
-          <button class="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center transition-all duration-300" 
-                  (click)="toggleLeftPanel()">
-            <svg class="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          
-          <!-- New Task button - bottom button (dark teal with white plus) -->
-          <button class="w-8 h-8 bg-teal-600 hover:bg-teal-700 rounded flex items-center justify-center transition-all duration-300" 
-                  (click)="createNewTask()">
-            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none">
-              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        
-        <!-- Expanded state content -->
-        <div class="flex justify-between items-center w-full" [class.hidden]="!isLeftPanelExpanded()">
-          <!-- Square icon - toggle button when expanded -->
-          <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-colors" 
-                  (click)="toggleLeftPanel()">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <path d="M16.5 16V8L12.5 12L16.5 16ZM5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z" fill="currentColor"/>
-            </svg>
-          </button>
-          
-          <!-- Search icon - only visible when expanded -->
-          <svg class="w-6 h-6 text-text-neutral transition-all duration-300" 
-               viewBox="0 0 24 24" fill="none">
-            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+      <div class="flex justify-between items-center px-2">
+        <!-- Square icon - toggle button (same for both states) -->
+        <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-colors" 
+                (click)="toggleLeftPanel()">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+            <path d="M16.5 16V8L12.5 12L16.5 16ZM5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z" fill="currentColor"/>
           </svg>
-        </div>
+        </button>
+        
+        <!-- Search icon - only visible when expanded -->
+        <svg class="w-6 h-6 text-text-neutral transition-all duration-300" 
+             [class.hidden]="!isLeftPanelExpanded()"
+             viewBox="0 0 24 24" fill="none">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+        </svg>
       </div>
 
-      <!-- New Task Button -->
+      <!-- New Task Button - same button, different styles based on state -->
       <button class="flex items-center justify-center h-9 px-4 bg-primary text-white rounded-6 font-roboto text-sm font-medium transition-all duration-300" 
-              [class.hidden]="!isLeftPanelExpanded()">
+              [class.hidden]="!isLeftPanelExpanded()"
+              (click)="createNewTask()">
         New Task
+      </button>
+      
+      <!-- New Task Button - collapsed state (same button, just icon) -->
+      <button class="w-8 h-8 bg-primary hover:bg-primary/90 rounded flex items-center justify-center transition-all duration-300 mx-auto" 
+              [class.hidden]="isLeftPanelExpanded()"
+              (click)="createNewTask()">
+        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </button>
 
       <!-- Today Section -->
