@@ -4,7 +4,7 @@
   
   <!-- Decorative Background Elements -->
   <div class="absolute inset-0 pointer-events-none flex flex-col justify-start items-start" data-loc="class _App">
-     <svg data-loc="class _App" class="absolute bottom-0 left-0 w-full h-full opacity-80 animate-float" style="transform: translateY(24rem);" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <svg data-loc="class _App" class="absolute bottom-0 left-0 w-full h-full opacity-80 animate-float" style="transform: translateY(26rem);" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g>
         <g filter="url(#filter0_f)">
           <path d="M1440 1130.77V900.73C1440 566.61 1169.14 295.752 835.022 295.752H604.978C270.858 295.752 0 566.61 0 900.73V1130.77C0 1464.89 270.858 1735.75 604.978 1735.75H835.022C1169.14 1735.75 1440 1464.89 1440 1130.77Z" fill="#E849F2"/>
@@ -50,17 +50,14 @@
         <!-- Square icon - toggle button (same for both states) -->
         <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-colors" 
                 (click)="toggleLeftPanel()">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
-            <path d="M16.5 16V8L12.5 12L16.5 16ZM5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z" fill="currentColor"/>
-          </svg>
+          <mat-icon class="w-6 h-6">menu</mat-icon>
         </button>
         
         <!-- Search icon - only visible when expanded -->
-        <svg class="w-6 h-6 text-text-neutral transition-all duration-300" 
-             [class.hidden]="!isLeftPanelExpanded()"
-             viewBox="0 0 24 24" fill="none">
-          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
-        </svg>
+        <mat-icon class="w-6 h-6 text-text-neutral transition-all duration-300" 
+                  [class.hidden]="!isLeftPanelExpanded()">
+          search
+        </mat-icon>
       </div>
 
       <!-- New Task Button - same button, different styles based on state -->
