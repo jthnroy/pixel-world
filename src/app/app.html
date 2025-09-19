@@ -38,7 +38,7 @@
   </div>
 
   <!-- Main Layout -->
-  <div class="relative z-10 flex h-screen flex-col lg:flex-row gap-6">
+  <div class="relative z-10 flex h-screen flex-col lg:flex-row" style="gap: 1.75rem;">
     <!-- Left Sidebar -->
     <div class="flex flex-col p-3 gap-2.5 lg:w-72 w-full lg:h-auto h-auto lg:border-r-0 border-b border-gray-200">
       <!-- Header Icons -->
@@ -152,8 +152,8 @@
 
           <!-- Task Progress Card -->
           <div class="bg-white border border-stroke-neutral-light rounded-16 p-4 w-full">
-            <div class="flex items-center gap-2.5 mb-5">
-              <svg class="w-6 h-6 text-text-neutral" viewBox="0 0 24 25" fill="none">
+            <div class="flex items-center gap-2.5 mb-5 cursor-pointer" (click)="toggleTaskProgress()">
+              <svg class="w-6 h-6 text-text-neutral transition-transform duration-200" [class.rotate-180]="!isTaskProgressExpanded()" viewBox="0 0 24 25" fill="none">
                 <path d="M12 8.79504L6 14.795L7.41 16.205L12 11.625L16.59 16.205L18 14.795L12 8.79504Z" fill="currentColor"/>
               </svg>
               <div class="flex-1 font-roboto text-lg font-semibold text-black">Task Progress</div>
@@ -161,7 +161,7 @@
             </div>
 
             <!-- Progress Items -->
-            <div class="space-y-5">
+            <div class="space-y-5 transition-all duration-300 overflow-hidden" [class.hidden]="!isTaskProgressExpanded()" [style.max-height]="isTaskProgressExpanded() ? '500px' : '0px'">
               <!-- Completed Task -->
               <div class="flex items-start gap-3">
                 <div class="w-6 h-6 bg-success-400 rounded-full flex items-center justify-center">

@@ -113,4 +113,12 @@ Best regards, Client Servicing Team`
     console.log('Toggling task completion:', taskId);
     // Implementation for toggling task completion
   }
+
+  // Task progress section toggle
+  protected isTaskProgressExpanded = signal(true);
+
+  // Method to toggle task progress section
+  protected toggleTaskProgress(): void {
+    this.isTaskProgressExpanded.set(!this.isTaskProgressExpanded());
+  }
 }
