@@ -121,4 +121,12 @@ Best regards, Client Servicing Team`
   protected toggleTaskProgress(): void {
     this.isTaskProgressExpanded.set(!this.isTaskProgressExpanded());
   }
+
+  // Left panel toggle
+  protected isLeftPanelExpanded = signal(true);
+
+  // Method to toggle left panel
+  protected toggleLeftPanel(): void {
+    this.isLeftPanelExpanded.set(!this.isLeftPanelExpanded());
+  }
 }
