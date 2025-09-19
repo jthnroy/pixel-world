@@ -47,10 +47,12 @@
          [class.w-16]="!isLeftPanelExpanded()">
       <!-- Header Icons -->
       <div class="flex justify-between items-center px-2">
-        <!-- Square icon - toggle button (same for both states) -->
+        <!-- Toggle button - different icons based on state -->
         <button class="w-6 h-6 text-text-neutral hover:bg-gray-100 rounded p-1 transition-colors" 
                 (click)="toggleLeftPanel()">
-          <mat-icon class="w-6 h-6">menu</mat-icon>
+          <mat-icon class="w-6 h-6">
+            {{ isLeftPanelExpanded() ? 'close' : 'menu' }}
+          </mat-icon>
         </button>
         
         <!-- Search icon - only visible when expanded -->
