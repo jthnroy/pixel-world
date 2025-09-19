@@ -1,0 +1,203 @@
+/* App component specific styles */
+.task-management-layout {
+  min-height: 100vh;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #FBECFA -28.37%, rgba(251, 236, 250, 0.00) 100%);
+}
+
+.decorative-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.main-layout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 100vh;
+}
+
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+  }
+}
+
+.sidebar-left {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  gap: 0.625rem;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-left {
+    width: 18rem;
+    border-right: 1px solid #e5e7eb;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar-left {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    height: auto;
+  }
+}
+
+.chat-area {
+  flex: 1;
+  background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 137.24%);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .chat-area {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 1rem;
+  }
+}
+
+.sidebar-right {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-width: 30rem;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-right {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar-right {
+    width: 100%;
+  }
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .task-item {
+    max-width: 22rem;
+  }
+}
+
+.sentiment-card {
+  background: linear-gradient(180deg, #CAFCE5 0%, #FFF 100%);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.progress-card {
+  background: white;
+  border: 1px solid #DEDEDE;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.chat-input {
+  position: relative;
+}
+
+.chat-input-inner {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(75px);
+  border: 1px solid #DEDEDE;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 121.981px 2.44px #FFF inset;
+}
+
+@media (min-width: 1024px) {
+  .chat-input-inner {
+    padding: 1.5rem;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(24rem) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(22rem) translateX(10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(26rem) translateX(-5px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(23rem) translateX(5px) rotate(0.5deg);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Focus states */
+.chat-input-inner:focus-within {
+  border-color: #00485E;
+  box-shadow: 0 0 0 3px rgba(0, 72, 94, 0.1), 0 0 121.981px 2.44px #FFF inset;
+}
+
+/* Hover states */
+.task-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.sentiment-card,
+.progress-card {
+  transition: all 0.2s ease;
+}
+
+.sentiment-card:hover,
+.progress-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
